@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game đơn giản - di chuyển đối tượng</title>
+</head>
+
+<body>
+    <div id="game"></div>
+    <div id="game2"></div>
+
+</body>
+
+<script>
+    function Hero(image, top, left, size, speed) {
+        this.image = image;
+        this.top = top;
+        this.left = left;
+        this.size = size;
+        this.speed = speed;
+
+
+        this.getHeroElement = function () {
+            return '<img width="' + this.size + '"' + ' height="' + this.size + '"' + ' src="' + this.image + '"' + ' style="top: ' + this.top + 'px; left: ' + this.left + 'px; position: absolute; " />';
+        }
+        this.moveRight = function () {
+            this.left += 20
+            ;
+            console.log('ok: ' + this.left);
+        }
+
+        // this.moveDown = function () {
+        //     this.top += 20;
+        //     console.log('kk: ' + this.top);
+        // }
+    }
+    var hero = new Hero(
+        'https://media.itsnicethat.com/original_images/giphy-2021-gifs-and-clips-animation-itsnicethat-02.gif',
+        50,
+        50,
+        110);
+
+
+    function start() {
+        if (hero.left < window.innerWidth - hero.size) {
+            hero.moveRight();
+        }
+        document.getElementById('game').innerHTML = hero.getHeroElement();
+        setTimeout(start, 500)
+
+        // if (hero.top < window.innerHeight - hero.size) {
+        //     hero.moveDown();
+        // }
+        // document.getElementById('game').innerHTML = hero.getHeroElement();
+        // setTimeout(start, 500)
+    }
+
+    start();
+
+    /////////////////////////////////////////////////////////////////
+
+    function Hero2(image2, top2, left2, size2) {
+        this.image2 = image2;
+            this.top2 = top2;
+            this.left2 = left2;
+            this.size2 = size2;
+
+        this.getHero2Element = function () {
+            return '<img width="' + this.size2 + '"' + ' height="' + this.size2 + '"' + ' src="' + this.image2 + '"' + ' style="top: ' + this.top2 + 'px; left: ' + this.left2 + 'px; position: absolute; " />';
+        }
+        this.moveDown2 = function () {
+            this.top2 += 20;
+            console.log('pppppppp: ' + this.top2);
+        }
+    }
+    var hero2 = new Hero2(
+       'https://media.tenor.com/HwoCkvK9mzQAAAAM/usagyuuun-run.gif',
+        150,
+        50,
+        100);
+
+    function start2() {
+        if (hero2.top2 < window.innerHeight - hero2.size2) {
+            hero2.moveDown2();
+        }
+        document.getElementById('game2').innerHTML = hero2.getHero2Element();
+        setTimeout(start2, 500)
+    }
+    start2();
+
+</script>
+
+</html>
