@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phát triển chương trình sử dụng Remote để điều khiển Tivi</title>
+</head>
+
+<body>
+    <script>
+        // khai báo một lớp tên remote
+        class Remote {
+            // hàm khởi tạo
+            constructor(code) {
+                this.code = code;
+                
+            }
+            // khai báo một phương thức
+            nextchannel(channel) {
+
+                console.log('kênh :' + channel);
+            }
+            changevolume(volume) {
+
+                console.log('âm lượng :' + volume);
+            }
+        }
+
+
+        class Tivi {
+            constructor(channel, volume, status) {
+                this.channel = channel;
+                this.volume = volume;
+                this.status = status;
+
+                this.getChannel = function () {
+                    return this.chanel;
+                }
+                this.getVolume = function () {
+                    return this.volume;
+                }
+                this.getStatus = function () {
+                    return this.status;
+                }
+
+
+            }
+            onTivi(status) {
+                this.status = true;
+                console.log('bật tivi');
+                return this.status;
+            }
+            offTivi(status) {
+                this.status = false;
+                console.log('tắt tivi');
+                return this.status;
+            }
+            channelUp(chanel) {
+                console.log('chuyển kênh + 1');
+                return this.channel++;
+            }
+            channelDown(chanel) {
+                console.log('chuyển kênh - 1');
+                return this.channel--;
+            }
+            volumeUp(volume) {
+                console.log('tăng âm lượng');
+                return volume++;
+            }
+            volumeDown(volume) {
+                console.log('giảm âm lượng');
+                return volume--;
+            }
+
+        }
+        let Remote1 = new Remote(1);
+        let TV = new Tivi(7, 30, true)
+        console.log(Remote1);
+        console.log(TV);
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    function TV(chanel, volume) {
+        this.chanel = chanel;
+        this.volume = volume;
+        this.status = false;
+
+        this.getChannel = function () {
+            return this.chanel;
+        }
+        this.getVolume = function () {
+            return this.volume;
+        }
+        this.getStatus = function () {
+            return this.status;
+        }
+
+        this.turnOn = function () {
+            return this.status = true
+        }
+        this.turnOff = function () {
+            return this.status = false
+        }
+
+        this.plusVolume = function () {
+            return this.volume++;
+        }
+        this.decreaseVolume = function () {
+            return this.volume--;
+        }
+        this.plusChannel = function () {
+            return this.chanel++
+        }
+        this.decreaseChannel = function () {
+            return this.chanel--;
+        }
+        this.controlChannel = function (chanel) {
+            return this.chanel = chanel;
+        }
+    }
+
+
+    function Remote(code) {
+        this.code = code;
+
+        this.onOfftv = function (tv) {
+            tv.status = !tv.status;
+        }
+
+        this.plusVolume = function (tv) {
+            if (tv.getStatus()) {
+                return tv.plusVolume();
+            } else {
+                console.log("TV đang tắt");
+            }
+        }
+        this.decreaseVolume = function (tv) {
+            if (tv.getStatus()) {
+                return tv.decreaseVolume();
+            } else {
+                console.log("TV đang tắt");
+            }
+        }
+        this.plusChannel = function (tv) {
+            if (tv.getStatus()) {
+                return tv.plusChannel();
+            } else {
+                console.log("TV đang tắt");
+            }
+        }
+        this.decreaseChannel = function (tv) {
+            if (tv.getStatus()) {
+                return tv.decreaseChannel();
+            } else {
+                console.log("TV đang tắt");
+            }
+        }
+        this.controlChannel = function (tv, chanel) {
+            if (tv.getStatus()) {
+                return tv.controlChannel(chanel);
+            } else {
+                console.log("TV đang tắt");
+            }
+        }
+    }
+
+    let tv = new TV(0, 0);
+    let remote = new Remote(1234);
+
+    console.log("Trạng thái");
+    console.log(tv.getStatus());
+    console.log(tv.turnOn());
+
+    console.log("");
+    console.log("Kênh");
+    console.log(tv.getChannel());
+    console.log(tv.controlChannel(2));
+    console.log(tv.plusChannel());
+    console.log(remote.plusChannel(tv));
+    console.log(tv.decreaseChannel());
+    console.log(remote.decreaseChannel(tv));
+
+    console.log("");
+    console.log("Âm lượng");
+    console.log(tv.getVolume());
+    console.log(tv.plusVolume());
+    console.log(remote.plusVolume(tv));
+    console.log(tv.decreaseVolume());
+    console.log(remote.decreaseVolume(tv));
+
+
+</script>
+
+</html>
